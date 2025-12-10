@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 3%;
+    --foreground: 45 100% 95%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 45 100% 95%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 45 100% 95%;
+
+    --primary: 45 100% 55%;
+    --primary-foreground: 0 0% 3%;
+
+    --secondary: 10 85% 25%;
+    --secondary-foreground: 45 100% 95%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 45 20% 65%;
+
+    --accent: 190 95% 50%;
+    --accent-foreground: 0 0% 3%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 45 30% 25%;
+    --input: 45 30% 20%;
+    --ring: 45 100% 55%;
+
+    --radius: 0.75rem;
+
+    --royal-gold: 45 100% 55%;
+    --royal-maroon: 10 85% 25%;
+    --royal-bronze: 30 65% 45%;
+    --tech-cyan: 190 95% 50%;
+    --empire-dark: 0 0% 5%;
+
+    --gradient-royal: linear-gradient(135deg, hsl(var(--royal-gold)) 0%, hsl(var(--royal-bronze)) 100%);
+    --gradient-empire: linear-gradient(180deg, hsl(var(--empire-dark)) 0%, hsl(var(--royal-maroon) / 0.3) 100%);
+    --gradient-tech: linear-gradient(90deg, hsl(var(--tech-cyan)) 0%, hsl(var(--royal-gold)) 100%);
+
+    --shadow-gold: 0 10px 50px -10px hsl(var(--royal-gold) / 0.5);
+    --shadow-empire: 0 20px 60px -15px hsl(var(--royal-maroon) / 0.6);
+
+    --transition-royal: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 45 100% 95%;
+    --sidebar-primary: 45 100% 55%;
+    --sidebar-primary-foreground: 0 0% 3%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 45 100% 95%;
+    --sidebar-border: 45 30% 25%;
+    --sidebar-ring: 45 100% 55%;
+  }
+
+  .dark {
+    --background: 0 0% 3%;
+    --foreground: 45 100% 95%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 45 100% 95%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 45 100% 95%;
+
+    --primary: 45 100% 55%;
+    --primary-foreground: 0 0% 3%;
+
+    --secondary: 10 85% 25%;
+    --secondary-foreground: 45 100% 95%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 45 20% 65%;
+
+    --accent: 190 95% 50%;
+    --accent-foreground: 0 0% 3%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 45 30% 25%;
+    --input: 45 30% 20%;
+    --ring: 45 100% 55%;
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 45 100% 95%;
+    --sidebar-primary: 45 100% 55%;
+    --sidebar-primary-foreground: 0 0% 3%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 45 100% 95%;
+    --sidebar-border: 45 30% 25%;
+    --sidebar-ring: 45 100% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel', serif;
+  }
+}
+
+@layer utilities {
+  .text-gradient-royal {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-royal);
+  }
+
+  .text-gradient-tech {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-tech);
+  }
+
+  .border-gradient-royal {
+    border-image: var(--gradient-royal) 1;
+  }
+
+  .shadow-gold-glow {
+    box-shadow: var(--shadow-gold);
+  }
+
+  .shadow-empire-glow {
+    box-shadow: var(--shadow-empire);
+  }
+}
+@font-face {
+  font-family: "Neoneon";
+  src: url("/fonts/Neoneon.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-neoneon {
+  font-family: "Neoneon", sans-serif;
+  letter-spacing: 0.1em;
+}
+
+.neon-pink {
+  color: #c6d700;
+  text-shadow:
+    0 0 5px #d8ed21,
+    0 0 10px #ff2d75,
+    0 0 20px #ff2d75,
+    0 0 40px #ff2d75,
+    0 0 80px rgba(255, 45, 117, 0.7);
+}
+
