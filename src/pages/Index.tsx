@@ -16,6 +16,9 @@ import bgmiIcon from "@/assets/event-icons/bgmi.png";
 import codingIcon from "@/assets/event-icons/coding.png";
 import treasureIcon from "@/assets/event-icons/treasure.png";
 import micIcon from "@/assets/event-icons/mic.png";
+import swordImage from "@/assets/sword.png"; 
+import oImage from "@/assets/shield.png";
+
 
 const Index = () => {
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -208,7 +211,7 @@ const Index = () => {
         >
         {/* Z Sword */}
         <img
-          src="/src/assets/sword.png"
+        src={swordImage}
           alt="Z sword"
           className="
             h-[0.9em] w-auto object-contain 
@@ -227,7 +230,7 @@ const Index = () => {
           </span>
 
           <img
-            src="/src/assets/shield.png"
+            src={oImage}
             alt="O shield"
             className="
               h-[0.9em] w-auto object-contain
