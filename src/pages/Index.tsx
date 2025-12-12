@@ -16,8 +16,13 @@ import bgmiIcon from "@/assets/event-icons/bgmi.png";
 import codingIcon from "@/assets/event-icons/coding.png";
 import treasureIcon from "@/assets/event-icons/treasure.png";
 import micIcon from "@/assets/event-icons/mic.png";
-import swordImage from "@/assets/sword.png"; 
+import swordImage from "@/assets/sword.png";
 import oImage from "@/assets/shield.png";
+import sponsor1 from "@/assets/sponsors/s1.png";
+import sponsor2 from "@/assets/sponsors/s2.png";
+import sponsor3 from "@/assets/sponsors/s3.png";
+import sponsor4 from "@/assets/sponsors/s4.png";
+
 
 
 const Index = () => {
@@ -27,9 +32,7 @@ const Index = () => {
     observerRef.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animate-fade-in-up");
-          }
+          if (entry.isIntersecting) entry.target.classList.add("animate-fade-in-up");
         });
       },
       { threshold: 0.1 }
@@ -55,8 +58,7 @@ const Index = () => {
       id: "raja-neeti",
       title: "Raja Neeti Sabha",
       subtitle: "The Royal Court of Strategy - IT Manager",
-      description:
-        "Pitch your empire-building ideas to the Maha Mantri and prove your strategic mastery.",
+      description: "Pitch your empire-building ideas to the Maha Mantri and prove your strategic mastery.",
       icon: crownIcon,
     },
     {
@@ -79,8 +81,7 @@ const Index = () => {
       id: "ranbhoomi",
       title: "Chakravyuha Warzone",
       subtitle: "The Ultimate Digital Battlefield - BGMI",
-      description:
-        "Lead your Sena (Agni, Vayu, or Vajra) to victory in this epic BGMI warfare.",
+      description: "Lead your Sena (Agni, Vayu, or Vajra) to victory in this epic BGMI warfare.",
       icon: bgmiIcon,
     },
     {
@@ -94,7 +95,7 @@ const Index = () => {
     {
       id: "gupta-rahasya",
       title: "Garudha Anveshana",
-      subtitle: "Hidden Secrets of Empire - Treasure Hunt ",
+      subtitle: "Hidden Secrets of Empire - Treasure Hunt",
       description:
         "Decode Sanskrit riddles and ancient maps merged with QR codes to find the Rajya Ratna.",
       icon: treasureIcon,
@@ -128,160 +129,113 @@ const Index = () => {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url(${heroImage})`,
-            filter: "brightness(0.4)",
-          }}
+          style={{ backgroundImage: `url(${heroImage})`, filter: "brightness(0.4)" }}
         />
+
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background" />
 
         <div className="relative z-10 container mx-auto px-4 text-center animate-fade-in">
-          {/* ⭐ College + Dept Block (Logo centered, medium size) ⭐ */}
+
+          {/* ⭐ College Header Block */}
           <div className="mb-4 flex flex-col items-center gap-2 animate-fade-in-up">
-            <div className="flex flex-col items-center justify-center gap-2 md:gap-3">
+
+            <div className="flex flex-col items-center justify-center gap-10 md:gap-1">
+              {/* Updated LOGO */}
               <img
                 src={logo}
                 alt="SIT Logo"
-                className="h-16 w-16 md:h-24 md:w-24 lg:h-28 lg:w-28 object-contain"
+                className="
+                  block leading-none
+                  h-12 w-12
+                  sm:h-20 sm:w-20
+                  md:h-28 md:w-28
+                  lg:h-36 lg:w-36
+                  object-contain
+                "
               />
 
-              <span
-                className="
-                  text-sm sm:text-base md:text-3xl lg:text-4xl
-                  font-cinzel uppercase text-primary
-                  tracking-[0.08em] md:tracking-[0.25em]
-                  text-center whitespace-nowrap
-                "
-              >
+              <span className="
+                text-sm sm:text-base md:text-2xl lg:text-3xl
+                font-cinzel font-bold uppercase text-primary
+                tracking-[0.08em] md:tracking-[0.25em]
+                text-center whitespace-nowrap
+              ">
                 Siddaganga Institute of Technology
               </span>
             </div>
 
-            {/* Department */}
-            <p
-              className="
-                text-[11px] sm:text-sm md:text-3xl lg:text-2xl
-                text-muted-foreground font-cinzel uppercase tracking-wide
-              "
-            >
+            <p className="
+              text-sm sm:text-base md:text-xl lg:text-3xl
+              font-cinzel font-bold uppercase text-primary
+              tracking-[0.08em] text-center whitespace-nowrap
+            ">
               Department of MCA
             </p>
 
-            {/* In Association With */}
-            <p
-              className="
-                text-[10px] sm:text-xs md:text-base lg:text-lg
-                text-muted-foreground font-cinzel uppercase tracking-wide
-              "
-            >
+            {/* ⭐ FIXED: Program Accredited by NBA (visible on small screens) */}
+            <p className="
+              text-xs sm:text-sm md:text-sm lg:text-sm
+              text-muted-foreground font-sans tracking-wide
+              mt-1 text-center
+            ">
+              (Program Accredited by NBA)
+            </p>
+
+            <p className="text-[10px] sm:text-xs md:text-base lg:text-lg text-muted-foreground font-cinzel uppercase tracking-wide">
               In Association With
             </p>
 
-            {/* PiedPipers */}
-            <p
-              className="
-                text-xs sm:text-sm md:text-2xl lg:text-xl
-                text-accent font-cinzel font-semibold uppercase
-                tracking-[0.25em] text-center
-              "
-            >
-              Students&apos; Coding Club PiedPipers
+            <p className="
+              text-xs sm:text-sm md:text-2xl lg:text-xl
+              text-accent font-cinzel font-semibold uppercase tracking-[0.25em]
+            ">
+              Students' Coding Club PiedPipers
             </p>
 
-            {/* Presents */}
-            <p
-              className="
-                text-[10px] sm:text-xs md:text-base lg:text-lg
-                text-muted-foreground font-cinzel uppercase tracking-wide
-              "
-            >
+            <p className="text-[10px] sm:text-xs md:text-base lg:text-lg text-muted-foreground font-cinzel uppercase tracking-wide">
               Presents
             </p>
           </div>
 
           {/* ZERONE Heading */}
           <h1
-          className="
-            flex items-center justify-center
-            text-7xl md:text-[10rem]
-            font-neoneon neon-pink
-            mb-6 animate-fade-in-up
-            leading-none
-          "
-        >
-        {/* Z Sword */}
-        <img
-        src={swordImage}
-          alt="Z sword"
-          className="
-            h-[0.9em] w-auto object-contain 
-            drop-shadow-[0_0_14px_#ffcc00aa]
-            mr-4
-            -translate-y-[0.10em]
-            mr-[0.12em]
-
-          "
-        />
-
-
-          {/* ER */}
-          <span className="flex items-center leading-none">
-            ER
-          </span>
-
-          <img
-            src={oImage}
-            alt="O shield"
             className="
-              h-[0.9em] w-auto object-contain
-              drop-shadow-[0_0_14px_#ffcc00aa]
-              -translate-y-[0.10em]
-              mx-[0.001em]
-              mr-[0.1em]
-              ml-[0.01em]
-
-
+              flex items-center justify-center
+              text-7xl md:text-[10rem]
+              font-neoneon neon-pink
+              mb-6 animate-fade-in-up leading-none
             "
-              />
-
-
-
-          {/* NE */}
-          <span className="flex items-center leading-none ml-4">
-            NE
-          </span>
-        </h1>
-
-
-
-
-          {/* ⭐ YUGA + Tagline on two lines ⭐ */}
-          <div
-            className="flex flex-col items-center justify-center mb-6 animate-fade-in-up"
-            style={{ animationDelay: "0.2s" }}
           >
-            <h2 className="text-4xl md:text-3xl font-cinzel text-sky tracking-wide">
-              YUGA
-            </h2>
-            <p className="text-xl md:text-2xl font-cinzel text-primary/90 mt-2">
-              The Age of Digital Empires
-            </p>
+            <img src={swordImage} alt="Z sword"
+              className="h-[0.9em] w-auto object-contain drop-shadow-[0_0_14px_#ffcc00aa] -translate-y-[0.10em] mr-[0.12em]"
+            />
+            <span>ER</span>
+
+            <img
+              src={oImage}
+              alt="O shield"
+              className="
+                h-[0.9em] w-auto object-contain
+                drop-shadow-[0_0_14px_#ffcc00aa]
+                -translate-y-[0.10em]
+                mx-[0.001em]
+              "
+            />
+            <span className="ml-4">NE</span>
+          </h1>
+
+          {/* YUGA + Tagline */}
+          <div className="flex flex-col items-center justify-center mb-6 animate-fade-in-up">
+            <h2 className="text-4xl md:text-3xl font-cinzel text-sky tracking-wide">YUGA</h2>
+            <p className="text-xl md:text-2xl font-cinzel text-primary/90 mt-2">The Age of Digital Empires</p>
           </div>
 
-          {/* Buttons Row */}
-          <div
-            className="
-              flex flex-col md:flex-row items-center justify-center
-              gap-4 md:gap-8 animate-fade-in-up
-            "
-            style={{ animationDelay: "0.4s" }}
-          >
+          {/* Buttons */}
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 animate-fade-in-up">
             <Button
               size="lg"
               className="bg-primary text-primary-foreground hover:bg-primary/90 font-cinzel text-lg px-8 py-6 shadow-gold-glow animate-glow-pulse"
-              onClick={() =>
-                document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })
-              }
+              onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
             >
               Enter The Empire
             </Button>
@@ -293,17 +247,14 @@ const Index = () => {
             </div>
 
             <a href="/Zerone_3.0 Brochure.pdf" download>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-primary/70 text-primary hover:bg-primary/10 font-cinzel text-lg px-8 py-6"
-              >
+              <Button size="lg" variant="outline" className="border-primary/70 text-primary hover:bg-primary/10 font-cinzel text-lg px-8 py-6">
                 Download Brochure
               </Button>
             </a>
           </div>
         </div>
       </section>
+
 
       {/* Theme Section */}
       <section id="about" className="py-24 relative observe-animation">
@@ -512,9 +463,9 @@ const Index = () => {
                   </h3>
                   <div className="space-y-1">
                     <p className="text-lg md:text-xl text-foreground mb-3">
-                      Khushi Jagadeesh
+                      Khushi Jagadeesh : 9019854409
                     </p>
-                    <p className="text-lg md:text-xl text-foreground mb-3">Lingadevaru H P</p>
+                    <p className="text-lg md:text-xl text-foreground mb-3">Lingadevaru H P : 9019746824</p>
                   </div>
                 </CardContent>
               </Card>
@@ -552,31 +503,38 @@ const Index = () => {
       </section>
 
       {/* Sponsors Section */}
-      <section className="py-24 bg-gradient-to-b from-background to-card/30 observe-animation">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-cinzel font-bold mb-6 text-gradient-tech">
-              Empire Supporters
-            </h2>
-            <p className="text-xl text-muted-foreground">
-              Powered by visionary organizations
-            </p>
-          </div>
+<section className="py-24 bg-gradient-to-b from-background to-card/30 observe-animation">
+  <div className="container mx-auto px-4">
+    
+    <div className="text-center mb-16">
+      <h2 className="text-5xl md:text-6xl font-cinzel font-bold mb-6 text-gradient-tech">
+        Empire Supporters
+      </h2>
+      <p className="text-xl text-muted-foreground">
+        Powered by visionary organizations
+      </p>
+    </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-            {[1, 2, 3, 4].map((i) => (
-              <Card
-                key={i}
-                className="bg-card/50 backdrop-blur-sm border-primary/30 hover:shadow-gold-glow transition-all duration-500 aspect-square flex items-center justify-center"
-              >
-                <CardContent className="p-8">
-                  <div className="text-4xl text-muted-foreground">SPONSOR {i}</div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+    {/* ⭐ NEW SPONSOR IMAGE GRID ⭐ */}
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+      {[sponsor1, sponsor2, sponsor3, sponsor4].map((img, index) => (
+        <div
+          key={index}
+          className="flex items-center justify-center hover:scale-105 transition-all duration-300"
+        >
+          <img
+            src={img}
+            alt={`Sponsor ${index + 1}`}
+            className="w-40 sm:w-40 md:w-50 object-contain"
+          />
         </div>
-      </section>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+
 
       {/* Footer */}
       <footer className="py-12 border-t border-primary/20 relative">

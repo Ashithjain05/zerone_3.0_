@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -31,7 +32,7 @@ type EventDetailType = {
   venue: string;
   registrationFee: string;
   coordinators: Coordinator[];
-  registrationLink: string; // ⭐ NEW
+  registrationLink: string; // per-event Google Form link (can be empty when not set)
 };
 
 const eventDetails: Record<string, EventDetailType> = {
@@ -42,12 +43,14 @@ const eventDetails: Record<string, EventDetailType> = {
       "Enter the ultimate knowledge warfare where your wisdom will be tested across three legendary rounds.",
     icon: brainIcon,
     rounds: [
-      "Judges’ decision is final",
-      "Rules will be disclosed on the spot",
+      "Each team must consist of 2 participants",
+      "A maximum of 2 teams per college is permitted",
+      "The judges’ decision is final and binding",
+      "Rules for the event will be disclosed on the spot",
       "Each round will have a fixed time limit",
-      "Rounds will cover a wide range of topics specific to the IT Industry",
-      "Participants must bring their own mobile devices and internet",
-      "Malpractice will lead to immediate disqualification",
+      "Rounds will cover a wide range of IT industry–related topics",
+      "Participants must bring their own mobile devices and internet connectivity",
+      "Any form of malpractice will result in immediate disqualification",
     ],
     prize: "Rs 5,000/-",
     teamSize: "2 members",
@@ -58,7 +61,7 @@ const eventDetails: Record<string, EventDetailType> = {
       { name: "LIKITHA P KUMAR", contact: "8660290349" },
       { name: "RAHUL H N", contact: "9632607249" },
     ],
-    registrationLink: "https://forms.gle/bUCVxvref2boC9A48", // 🔗 replace
+    registrationLink: "https://forms.gle/bUCVxvref2boC9A48",
   },
 
   "raja-neeti": {
@@ -67,16 +70,17 @@ const eventDetails: Record<string, EventDetailType> = {
     description: "Present your empire-building strategy before the Maha Mantri.",
     icon: crownIcon,
     rounds: [
-      "Maximum 3 participants per college.",
-      "Smartphones may be used only when instructed.",
-      "Rules for each round will be announced on the spot.",
-      "Malpractice will lead to immediate disqualification.",
-      "Judges' decisions are final and binding.",
-      "Participants must demonstrate problem-solving and decision-making skills.",
-      "Professional behavior is expected throughout the event.",
+      "This is an individual event",
+      "A maximum of 3 participants per college is allowed",
+      "Smartphones may be used only when instructed by the coordinators",
+      "Rules for each round will be announced on the spot",
+      "Any form of malpractice will lead to immediate disqualification",
+      "The judges’ decisions are final and binding",
+      "Participants must demonstrate strong problem-solving and decision-making skills",
+      "Professional behavior is expected throughout the event",
     ],
     prize: "Rs 4,000/-",
-    teamSize: "Individual ",
+    teamSize: "Individual",
     duration: "3 hours",
     venue: "Media Center , SIT College",
     registrationFee: "₹200",
@@ -94,17 +98,19 @@ const eventDetails: Record<string, EventDetailType> = {
       "Capture royal architecture, warrior emotions, and fusion of tradition with technology.",
     icon: cameraIcon,
     rounds: [
-      "Maximum 3 participants per college.",
-      "Participants must assemble 30 minutes before the event to receive instructions.",
-      "All editing must be done in front of volunteers in the designated area.",
-      "Malpractice (taking help from others) will result in immediate elimination.",
-      "Edited photos and videos must be submitted within the given time.",
-      "No additional people other than participants are allowed in the event area.",
-      "Photography must be done using mobile phones only. Cameras are not allowed.",
-      "All submitted content must be original and free from copyright violations.",
+      "This is an individual event",
+      "A maximum of 3 participants per college is permitted",
+      "Participants must assemble 30 minutes before the event begins",
+      "All editing must be performed in front of the volunteers within the designated area",
+      "Any form of malpractice will lead to immediate elimination",
+      "Edited photos and videos must be submitted within the allotted time",
+      "Only participants are allowed inside the event area",
+      "Photography must be done using mobile phones only",
+      "DSLR cameras are strictly not allowed",
+      "All content must be original and free from copyright violations",
     ],
     prize: "Rs 3,500/-",
-    teamSize: "Individual ",
+    teamSize: "Individual",
     duration: "4 hours",
     venue: "MCA Lecture Hall 2",
     registrationFee: "₹200 per participant",
@@ -122,21 +128,22 @@ const eventDetails: Record<string, EventDetailType> = {
       "Architect digital empires with stunning UI/UX and chakra animations.",
     icon: designIcon,
     rounds: [
-      "Maximum 2 teams per college.",
-      "Cumulative scoring will decide the final result.",
-      "Software allowed: Adobe Illustrator, Adobe Photoshop, Canva, Figma",
-      "Some rounds will be based on HTML, CSS, and JavaScript.",
-      "Participants may use any preferred code editor (e.g., VS Code, Sublime Text, etc.).",
-      "Referring to external code is strictly not allowed.",
-      "Participants must bring their own laptop, mobile phone, and chargers.",
-      "The event schedule must be followed strictly.",
-      "Install all required software before the event.",
+      "AI Agents are strictly prohibited",
+      "Each team must consist of 2 members",
+      "Results will be determined based on cumulative scoring",
+      "Allowed software/tools: Adobe Express, Canva, Figma",
+      "Certain rounds will involve HTML, CSS, and JavaScript",
+      "Participants may use VS Code as the only permitted code editor",
+      "Referring to external code is not allowed",
+      "Participants must bring their own laptops, mobile phones, and chargers",
+      "All teams must adhere to the event schedule",
+      "Required software must be installed prior to the event",
     ],
     prize: "Rs 5,500/-",
     teamSize: "2 members",
     duration: "5 hours",
     venue: "MCA Project Lab",
-    registrationFee: "₹350 per team",
+    registrationFee: "₹300 per team",
     coordinators: [
       { name: "NUTHAN A M", contact: "9845541168" },
       { name: "HARSHITHA H", contact: "6363323303" },
@@ -150,20 +157,23 @@ const eventDetails: Record<string, EventDetailType> = {
     description: "Lead your Sena to victory in this epic BGMI tournament.",
     icon: bgmiIcon,
     rounds: [
-      "Maximum 2 teams per college",
-      "Participants must carry their valid ID proof for the event",
-      "The squad must be physically present for the match",
-      "The game will be played in custom rooms created by the host",
-      "Rules for each round will be disclosed on the spot",
-      "Exploiting bugs or glitches for unfair advantage will lead to disqualification",
-      "Every round will have a fixed time duration",
-      "Participants must carry their own mobile devices",
+      "Each team must consist of 4 participants",
+      "A maximum of 2 teams per college is allowed",
+      "On-spot registrations are not allowed",
+      "Participants must carry a valid ID proof for verification",
+      "The entire squad must be physically present for the match",
+      "All matches will be played in custom rooms created by the host",
+      "Rules for each round will be announced on the spot",
+      "Exploiting bugs or glitches to gain an unfair advantage will result in disqualification",
+      "Each round will have a fixed time duration",
+      "Participants must bring their own mobile devices",
+      "Any form of malpractice will lead to immediate disqualification",
     ],
     prize: "Rs 7,000/-",
     teamSize: "4 members",
     duration: "6 hours",
     venue: "Media Center, SIT College",
-    registrationFee: "₹600 per squad",
+    registrationFee: "₹500 per squad",
     coordinators: [
       { name: "ACHYUTH U S", contact: "9148686067" },
       { name: "BINDHU SREE K S", contact: "8904464903" },
@@ -177,14 +187,16 @@ const eventDetails: Record<string, EventDetailType> = {
     description: "Conquer coding challenges from Astra to Brahmastra difficulty.",
     icon: codingIcon,
     rounds: [
-      "Maximum 3 participants from each college.",
-      "Programming languages allowed: C, C++, Java, Python.",
-      "Participants must report to the venue 30 minutes before the event to understand the rules for the respective rounds.",
-      "Pen and paper will be provided if necessary.",
-      "Personal gadgets are strictly prohibited; organizers will provide a PC for the event.",
-      "Any malpractice will result in immediate disqualification of the participant.",
-      "The verdict of the judges will be final and binding.",
-      "Rules for each round will be disclosed on the spot.",
+      "This is an individual event",
+      "A maximum of 3 participants per college is allowed",
+      "Allowed programming languages: C, C++, Java, Python",
+      "Participants must report to the venue 30 minutes before the event for round-wise instructions",
+      "Pen and paper will be provided if required",
+      "HackerRank credentials are mandatory for all participants",
+      "Personal gadgets are strictly prohibited; organizers will provide a PC for the event",
+      "Any form of malpractice will lead to immediate disqualification",
+      "The decision of the judges is final and binding",
+      "Rules for each round will be announced on the spot",
     ],
     prize: "Rs 4,000/-",
     teamSize: "Individual",
@@ -204,13 +216,16 @@ const eventDetails: Record<string, EventDetailType> = {
     description: "Decode Sanskrit riddles and QR code puzzles to find the Rajya Ratna.",
     icon: treasureIcon,
     rounds: [
-      "Maximum 2 teams per college",
-      "Judges’ decision is final",
-      "Rules will be disclosed on the spot",
-      "Each round will have a fixed time limit",
-      "Rounds will cover a wide range of topics specific to the IT Industry",
-      "Participants must bring their own mobile devices and internet",
-      "Malpractice will lead to immediate disqualification",
+      "Each team must consist of 4 members",
+      "A maximum of 2 teams per college is permitted",
+      "On-spot registrations are not allowed",
+      "Teams must carry proof of registration or event ID throughout the event",
+      "Participants must maintain respectful behavior; any misconduct will result in disqualification",
+      "Teams must not tamper with other teams, property, or seek external assistance",
+      "Do not damage, hide, or misuse clues or event materials",
+      "All campus rules must be followed, and participants must stay within the designated areas",
+      "No external or outsider assistance is allowed",
+      "The decisions of the coordinators and judges are final",
     ],
     prize: "Rs 7,000/-",
     teamSize: "4 members",
@@ -225,26 +240,29 @@ const eventDetails: Record<string, EventDetailType> = {
   },
 
   "vak-yuddha": {
-    title: "Dhwani Yuddha ",
+    title: "Dhwani Yuddha",
     subtitle: "Voice of the Empire - Tech Talk",
     description: "Speak before the burning throne with powerful oratory.",
     icon: micIcon,
     rounds: [
+      "This is a solo event",
+      "A maximum of 3 participants per college is allowed",
       "The competition will consist of 3 rounds",
-      "There is no preparation time",
-      "Use of offensive language or breaking any rule will lead to disqualification",
+      "No preparation time will be provided",
+      "The judge’s spelling must be followed exactly",
+      "Use of offensive language or violation of any rule will result in disqualification",
       "The judges’ decision is final and binding",
-      "The event will test knowledge, creativity, and presentation skills",
+      "The event will assess knowledge, creativity, and presentation skills",
       "In case of a tie, a tiebreaker round will be conducted",
     ],
     prize: "Rs 4,000/-",
     teamSize: "Individual",
     duration: "2 hours",
     venue: "MCA Seminar Hall",
-    registrationFee: "₹250",
+    registrationFee: "₹200",
     coordinators: [
       { name: "Mohith K V", contact: "9353938681" },
-      { name: "Snehashree N ", contact: "8088816630" },
+      { name: "Snehashree N", contact: "8088816630" },
     ],
     registrationLink: "https://forms.gle/jMp8dZsc9MMME4m27",
   },
@@ -255,6 +273,11 @@ const EventDetail = () => {
   const navigate = useNavigate();
 
   const event = id ? eventDetails[id] : null;
+
+  // Ensure page starts at top when component mounts or `id` changes.
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, [id]);
 
   if (!event) {
     return (
@@ -268,6 +291,14 @@ const EventDetail = () => {
       </div>
     );
   }
+
+  const handleRegisterClick = () => {
+    if (event.registrationLink && event.registrationLink.trim() !== "") {
+      window.open(event.registrationLink, "_blank", "noopener,noreferrer");
+    } else {
+      alert("Registration link not available yet. Please check back later.");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
@@ -367,9 +398,7 @@ const EventDetail = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-xl font-semibold">
-                  {event.registrationFee}
-                </p>
+                <p className="text-xl font-semibold">{event.registrationFee}</p>
               </CardContent>
             </Card>
           </div>
@@ -386,9 +415,7 @@ const EventDetail = () => {
                 {event.rounds.map((round, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center mt-1">
-                      <span className="text-primary font-bold">
-                        {index + 1}
-                      </span>
+                      <span className="text-primary font-bold">{index + 1}</span>
                     </div>
                     <span className="text-lg text-foreground">{round}</span>
                   </li>
@@ -411,18 +438,12 @@ const EventDetail = () => {
                     key={index}
                     className="p-4 rounded-lg border border-primary/30 bg-background/40"
                   >
-                    <p className="text-lg font-cinzel text-primary">
-                      {coord.name}
-                    </p>
+                    <p className="text-lg font-cinzel text-primary">{coord.name}</p>
                     {coord.role && (
-                      <p className="text-sm text-muted-foreground">
-                        {coord.role}
-                      </p>
+                      <p className="text-sm text-muted-foreground">{coord.role}</p>
                     )}
                     {coord.contact && (
-                      <p className="text-sm text-accent mt-1">
-                        {coord.contact}
-                      </p>
+                      <p className="text-sm text-accent mt-1">{coord.contact}</p>
                     )}
                   </div>
                 ))}
@@ -434,9 +455,7 @@ const EventDetail = () => {
           <div className="text-center">
             <Button
               className="bg-primary text-primary-foreground font-cinzel text-lg px-12 py-6 shadow-gold-glow"
-              onClick={() =>
-                window.open(event.registrationLink, "_blank")
-              }
+              onClick={handleRegisterClick}
             >
               Register for This Trial
             </Button>
