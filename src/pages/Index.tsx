@@ -576,7 +576,7 @@ const Index = () => {
           </div>
 
           {/* ⭐ Bottom-Right Crafted Text */}
-          <div className="absolute right-12 bottom-12 text-right">
+          <div className="absolute right-7 bottom-2 text-right">
             <p className="text-sm text-muted-foreground">Crafted ⚔️ by</p>
             <span className="neon-zerone font-cinzel text-lg">Ashith Jain</span>
           </div>
